@@ -1,0 +1,12 @@
+<launch>
+
+	<node pkg="px4ctrl" type="px4ctrl_node" name="px4ctrl" output="screen">
+        	<remap from="~odom" to="/vins/imu_propagate" />
+		<remap from="~cmd" to="/setpoints_cmd" />
+		<remap from="~planning/trajectory" to="/drone_0_planning/trajectory" />
+		<remap from="~planning/heartbeat" to="/drone_0_traj_server/heartbeat" />
+
+        <rosparam command="load" file="$(find px4ctrl)/config/ctrl_param_fpv.yaml" />
+	</node>
+ 
+</launch>

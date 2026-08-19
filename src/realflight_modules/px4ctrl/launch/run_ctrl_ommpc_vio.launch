@@ -1,0 +1,15 @@
+<launch>
+  <arg name="odom_topic" default="/vins/imu_propagate" />
+  <arg name="trajectory_topic" default="/drone_0_planning/trajectory" />
+  <arg name="heartbeat_topic" default="/drone_0_traj_server/heartbeat" />
+
+  <node pkg="px4ctrl" type="px4ctrl_node" name="px4ctrl" output="screen">
+    <remap from="~odom" to="$(arg odom_topic)" />
+    <remap from="~cmd" to="/setpoints_cmd" />
+    <remap from="~planning/trajectory" to="$(arg trajectory_topic)" />
+    <remap from="~planning/heartbeat" to="$(arg heartbeat_topic)" />
+
+    <rosparam command="load" file="$(find px4ctrl)/config/ctrl_param_fpv.yaml" />
+    <param name="pose_solver" value="3" />
+  </node>
+</launch>

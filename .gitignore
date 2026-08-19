@@ -1,0 +1,19 @@
+# Catkin workspace outputs
+/build/
+/devel/
+/install/
+/logs/
+/.catkin_tools/
+
+# Runtime data
+*.bag
+*.bag.active
+*.pcd
+Log/
+PCD/
+
+# Editor, OS, and language caches
+.DS_Store
+__pycache__/
+*.py[cod]
+*~
